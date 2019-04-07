@@ -125,7 +125,7 @@ h6 {
 --------------------------------------------------------------*/
 
 #header {
-  height: 80px;
+  height: 78px;
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
@@ -136,19 +136,19 @@ h6 {
 
 #header.header-scrolled,
 #header.header-pages {
-  height: 80px;
-  padding: 20px 0;
+  height: 70px;
+  padding: 12px 0;
 }
 
 #header .logo h1 {
-  font-size: 28px;
+  font-size: 24px;
   margin: 0;
   padding: 0;
   line-height: 1;
   font-weight: 400;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 #header .logo h1 a,
@@ -1354,12 +1354,12 @@ Modal Popup
 
 @media (max-width: 991px) {
   #header {
-    height: 80px;
+    height: 60px;
     padding: 10px 0;
   }
 
   #header .logo h1 {
-    font-size: 28px;
+    font-size: 24px;
     padding: 8px 0;
   }
 
