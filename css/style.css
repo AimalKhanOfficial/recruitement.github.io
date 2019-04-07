@@ -136,7 +136,7 @@ h6 {
 
 #header.header-scrolled,
 #header.header-pages {
-  height: 90px;
+  height: 80px;
   padding: 10px 0;
 }
 
@@ -1354,7 +1354,7 @@ Modal Popup
 
 @media (max-width: 991px) {
   #header {
-    height: 90px;
+    height: 80px;
     padding: 10px 0;
   }
 
