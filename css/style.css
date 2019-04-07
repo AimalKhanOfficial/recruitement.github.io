@@ -167,6 +167,20 @@ h6 {
   margin-top: 60px;
 }
 
+/*----------
+Modal Popup 
+------------*/
+
+#pop-up-modal-section {
+  background: #007bff;
+}
+
+#pop-up-modal-title {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 700;
+}
+
 /*--------------------------------------------------------------
 # Intro Section
 --------------------------------------------------------------*/
