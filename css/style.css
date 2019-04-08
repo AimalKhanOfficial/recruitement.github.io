@@ -1354,12 +1354,12 @@ Modal Popup
 
 @media (max-width: 991px) {
   #header {
-    height: 60px;
+    height: 75px;
     padding: 10px 0;
   }
 
   #header .logo h1 {
-    font-size: 22px;
+    font-size: 21px;
     padding: 8px 0;
   }
 
@@ -1418,11 +1418,5 @@ Modal Popup
   #testimonials .testimonial-item h4,
   #testimonials .testimonial-item p {
     margin-left: 0;
-  }
-}
-
-@media (max-width: 574px) {
-  #intro {
-    padding: 100px 0 20px 0;
   }
 }
