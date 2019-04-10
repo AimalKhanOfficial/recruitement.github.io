@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
   "use strict";
-
+  $('#img-load').hide();
   //Contact
   $('form.contactForm').submit(function () {
     var f = $(this).find('.form-group'),
@@ -95,33 +95,61 @@ jQuery(document).ready(function ($) {
     if (!action) {
       action = 'contactform/contactform.php';
     }
-
-    var contactFormData = new FormData();
-    contactFormData.append('name', $('#name').val());
-    contactFormData.append('email', $('#email').val());
-    contactFormData.append('subject', $('#subject').val());
-    contactFormData.append('message', $('#textAreaMsg').val());
-    contactFormData.append('my_file', $('#fileToUpload').prop('files')[0]);
-    $.ajax({
-      type: "POST",
-      url: action,
-      data: contactFormData,
-      processData: false,
-      contentType: false,
-      success: function (msg) {
-        // alert(msg);
-        if (msg == 'OK') {
-          $("#sendmessage").addClass("show");
-          $("#errormessage").removeClass("show");
-          $('.contactForm').find("input, textarea").val("");
-        } else {
-          $("#sendmessage").removeClass("show");
-          $("#errormessage").addClass("show");
-          $('#errormessage').html(msg);
+    
+    var allowedExtensions = ["pdf", "doc", "docx", "jpg", "jpeg", "png", "gif", "txt"];
+    var fileSizes = 0;
+    var valid_form = true;
+    var files = $('#fileToUpload').prop('files');
+    for (var i = 0; i < files.length; i++) {
+      if (files[i] != null) {
+        fileSizes += files[i].size;
+        var extn = files[i].name.split('.').pop();
+        if (!allowedExtensions.includes(extn.toLowerCase())) {
+          valid_form = false;
+          $('#formValidation').html("File name: " + files[i].name + " is not supported, select a valid file!").show();
+          break;
+        } else if (fileSizes > 20 * 1024 * 1024) {
+          //checking for size, must be less than or equal to 20 MB
+          valid_form = false;
+          $('#formValidation').html("File size too huge. Must be less than or equal to 20 MB").show();
+          break;
         }
-
       }
-    });
+    }
+    if (!valid_form) {
+      return false;
+    } else {
+      $('#myLoadingModal').modal('show');
+      var contactFormData = new FormData();
+      contactFormData.append('name', $('#name').val());
+      contactFormData.append('email', $('#email').val());
+      contactFormData.append('subject', $('#subject').val());
+      contactFormData.append('message', $('#textAreaMsg').val());
+      for (var x = 0; x < document.getElementById('fileToUpload').files.length; x++) {
+        contactFormData.append('my_file[]', document.getElementById('fileToUpload').files[x]);
+      }
+      $.ajax({
+        type: "POST",
+        url: action,
+        data: contactFormData,
+        processData: false,
+        contentType: false,
+        success: function (msg) {
+          if (msg.includes("Mailer Error")){
+            $("#sendmessage").removeClass("show");
+            $("#errormessage").addClass("show");
+            $('#errormessage').html("Something went wrong while processing your request, please contact us by phone!");
+            $('#myLoadingModal').modal('hide');
+          }
+          else if (msg.includes("Message has been sent")) {
+            $("#sendmessage").addClass("show");
+            $("#errormessage").removeClass("show");
+            $('.contactForm').find("input, textarea").val("");
+            $('#myLoadingModal').modal('hide');
+          }
+        }
+      });
+    }
     return false;
   });
 

@@ -11,18 +11,20 @@
     $mail->Host = "smtp.gmail.com";
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
-    $mail->Username = "";
-    $mail->Password = "";
-    $mail->SetFrom("");
+    $mail->Username = "tiptoprecruitmentofficial@gmail.com";
+    
+    $mail->SetFrom("tiptoprecruitmentofficial@gmail.com");
     $mail->Subject = $_POST['subject'];
     $mail->Body = $_POST['message'];
-    $mail->AddAddress("");
-
-    $mail->AddAttachment($_FILES['my_file']['tmp_name'], $_FILES['my_file']['name']); 
+    $mail->AddAddress("tiptoprecruitmentofficial@gmail.com");
+    echo count($_FILES['my_file']['tmp_name']);
+    for($ct=0;$ct<count($_FILES['my_file']['tmp_name']);$ct++){
+      $mail->AddAttachment($_FILES['my_file']['tmp_name'][$ct], $_FILES['my_file']['name'][$ct]);
+    }  
 
      if(!$mail->Send()) {
-        //echo "Mailer Error: " . $mail->ErrorInfo;
+        echo "Mailer Error: " . $mail->ErrorInfo;
      } else {
-        //echo "Message has been sent";
+        echo "Message has been sent";
      }
 ?>

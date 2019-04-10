@@ -63,7 +63,7 @@
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
           <!-- <li><a href="#portfolio">Portfolio</a></li> -->
-          <li><a href="#team">Team</a></li>
+          <!-- <li><a href="#team">Team</a></li> -->
           <!-- <li class="drop-down"><a href="">Drop Down</a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -82,6 +82,7 @@
             </ul>
           </li> -->
           <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#contact">Post your CV</a></li>
         </ul>
       </nav><!-- .main-nav -->
 
@@ -544,7 +545,7 @@
     <!--==========================
       Clients Section
     ============================-->
-    <section id="testimonials" class="section-bg">
+    <!-- <section id="testimonials" class="section-bg">
       <div class="container">
 
         <header class="section-header">
@@ -613,12 +614,13 @@
 
 
       </div>
-    </section><!-- #testimonials -->
+    </section> -->
+    <!-- #testimonials -->
 
     <!--==========================
       Team Section
     ============================-->
-    <section id="team">
+    <!-- <section id="team">
       <div class="container">
         <div class="section-header">
           <h3>Team</h3>
@@ -702,12 +704,13 @@
         </div>
 
       </div>
-    </section><!-- #team -->
+    </section> -->
+    <!-- #team -->
 
     <!--==========================
       Clients Section
     ============================-->
-    <section id="clients" class="section-bg">
+    <!-- <section id="clients" class="section-bg">
 
       <div class="container">
 
@@ -771,7 +774,7 @@
 
       </div>
 
-    </section>
+    </section> -->
 
     <!--==========================
       Contact Section
@@ -809,7 +812,7 @@
               </div>
             </div>
 
-            <div class="form">
+            <div id="contact-form" class="form">
               <div id="sendmessage">Your message has been sent. Thank you!</div>
               <div id="errormessage"></div>
               <form action="" method="post" role="form" class="contactForm" enctype="multipart/form-data">
@@ -832,11 +835,13 @@
                 </div>
                 <div class="form-group">
                   <textarea class="form-control" id="textAreaMsg" name="message" rows="5" data-rule="required"
-                    data-msg="Please write something for us" placeholder="Message" value="subjectsubjectasdasdasd" ></textarea>
+                    data-msg="Please write something for us" placeholder="Message"
+                    value="subjectsubjectasdasdasd"></textarea>
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="file" name="fileToUpload" id="fileToUpload">
+                  <input type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
+                  <div id="formValidation" class="validation"></div>
                 </div>
                 <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
               </form>
@@ -935,8 +940,29 @@
           </button>
         </div>
         <div id="pop-up-modal-body" class="modal-body"></div>
-        <div class="modal-footer">
+        <div class="modal-footer" id="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Bootstrap loading modal - Aimal Khan-->
+  <div data-backdrop="static" data-keyboard="false" class="modal fade" id="myLoadingModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title">Processing your request, please wait..</h6>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <img src="./img/loading.gif" alt="loading gif.." height="100" width="100"/>
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -959,14 +985,11 @@
   <script src="lib/isotope/isotope.pkgd.min.js"></script>
   <script src="lib/lightbox/js/lightbox.min.js"></script>
   <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+  <script defer src="contactform/contactform.js"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
   <script src="js/custom.js"></script>
-
-
-
+  <script src="js/main.js"></script>
 </body>
 
 </html>

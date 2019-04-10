@@ -171,11 +171,11 @@ h6 {
 Modal Popup 
 ------------*/
 
-#pop-up-modal-section {
+.modal-header {
   background: #007bff;
 }
 
-#pop-up-modal-title {
+.modal-title {
   color: #fff;
   font-size: 25px;
   font-weight: 700;
@@ -1141,8 +1141,8 @@ Modal Popup
 }
 
 #contact .form #sendmessage {
-  color: #007bff;
-  border: 1px solid #007bff;
+  color: green;
+  border: 1px solid green;
   display: none;
   text-align: center;
   padding: 15px;
