@@ -12,7 +12,7 @@
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
     $mail->Username = "tiptoprecruitmentofficial@gmail.com";
-    $mail->Password = "xxxxxxxxxx";
+    $mail->Password = "xxxxxx";
     $mail->SetFrom("tiptoprecruitmentofficial@gmail.com");
     $mail->Subject = $_POST['subject'];
     $mail->Body = $_POST['message'];
