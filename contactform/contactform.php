@@ -1,5 +1,5 @@
 <?php 
-    require  '/storage/ssd1/017/9222017/public_html/contactform/phpmailer/PHPMailerAutoload.php';
+    require  'phpmailer/PHPMailerAutoload.php';
     //require  'phpmailer\class.smtp.php';
     //include_once(PATH.'/PHPMailer/src/SMTP.php');
     $mail = new PHPMailer(); 
@@ -12,7 +12,7 @@
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
     $mail->Username = "tiptoprecruitmentofficial@gmail.com";
-    $mail->Password = "xxxxxx";
+    $mail->Password = "xxxx";
     $mail->SetFrom("tiptoprecruitmentofficial@gmail.com");
     $mail->Subject = $_POST['subject'];
     $mail->Body = $_POST['message'];
