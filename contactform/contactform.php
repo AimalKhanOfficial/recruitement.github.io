@@ -1,6 +1,6 @@
 <?php 
-    require  'phpmailer\PHPMailerAutoload.php';
-    require  'phpmailer\class.smtp.php';
+    require  '/storage/ssd1/017/9222017/public_html/contactform/phpmailer/PHPMailerAutoload.php';
+    //require  'phpmailer\class.smtp.php';
     //include_once(PATH.'/PHPMailer/src/SMTP.php');
     $mail = new PHPMailer(); 
     $mail->IsSMTP(); // enable SMTP
@@ -12,12 +12,12 @@
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
     $mail->Username = "tiptoprecruitmentofficial@gmail.com";
-    
+    $mail->Password = "xxxxxxxxxx";
     $mail->SetFrom("tiptoprecruitmentofficial@gmail.com");
     $mail->Subject = $_POST['subject'];
     $mail->Body = $_POST['message'];
     $mail->AddAddress("tiptoprecruitmentofficial@gmail.com");
-    echo count($_FILES['my_file']['tmp_name']);
+    
     for($ct=0;$ct<count($_FILES['my_file']['tmp_name']);$ct++){
       $mail->AddAttachment($_FILES['my_file']['tmp_name'][$ct], $_FILES['my_file']['name'][$ct]);
     }  

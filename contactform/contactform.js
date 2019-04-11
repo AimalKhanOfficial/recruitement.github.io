@@ -137,6 +137,7 @@ jQuery(document).ready(function ($) {
         success: function (msg) {
           if (msg.includes("Mailer Error")){
             $("#sendmessage").removeClass("show");
+            $('#formValidation').hide();
             $("#errormessage").addClass("show");
             $('#errormessage').html("Something went wrong while processing your request, please contact us by phone!");
             $('#myLoadingModal').modal('hide');
@@ -144,6 +145,7 @@ jQuery(document).ready(function ($) {
           else if (msg.includes("Message has been sent")) {
             $("#sendmessage").addClass("show");
             $("#errormessage").removeClass("show");
+            $('#formValidation').hide();
             $('.contactForm').find("input, textarea").val("");
             $('#myLoadingModal').modal('hide');
           }
