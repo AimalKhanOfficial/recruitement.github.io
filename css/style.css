@@ -1181,7 +1181,7 @@ Modal Popup
   font-size: 14px;
 }
 
-#contact .form button[type="submit"] {
+#contact .form button[type="button"] {
   background: #007bff;
   border: 0;
   border-radius: 20px;
@@ -1190,7 +1190,7 @@ Modal Popup
   transition: 0.3s;
 }
 
-#contact .form button[type="submit"]:hover {
+#contact .form button[type="button"]:hover {
   background: #0067d5;
   cursor: pointer;
 }

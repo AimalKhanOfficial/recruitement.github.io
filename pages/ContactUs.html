@@ -83,6 +83,7 @@
                     <div class="col-lg-6">
                         <div class="map mb-4 mb-lg-0">
                             <iframe
+                                title="google iframe"
                                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d311044.80513782124!2d-1.78287!3d52.478456!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870b06165497ead%3A0x128654bdd6738fcf!2sBirmingham+B33%2C+UK!5e0!3m2!1sen!2sus!4v1554671642419!5m2!1sen!2sus"
                                 width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                         </div>
@@ -111,34 +112,34 @@
                                 <div class="form-row">
                                     <div class="form-group col-lg-6">
                                         <input type="text" name="name" class="form-control" id="name"
-                                            placeholder="Your Name" data-rule="minlen:4"
+                                            placeholder="Your Name" data-rule="minlen:4" aria-label="Enter Name Here"
                                             data-msg="Please enter at least 4 chars" />
                                         <div class="validation"></div>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <input type="email" class="form-control" name="email" id="email"
-                                            placeholder="Your Email" data-rule="email"
+                                            placeholder="Your Email" data-rule="email" aria-label="Enter Email Here"
                                             data-msg="Please enter a valid email" />
                                         <div class="validation"></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="subject" id="subject"
-                                        placeholder="Subject" data-rule="minlen:4"
+                                        placeholder="Subject" data-rule="minlen:4" aria-label="Enter Subject Here"
                                         data-msg="Please enter at least 8 chars of subject" />
                                     <div class="validation"></div>
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control" id="textAreaMsg" name="message" rows="5"
-                                        data-rule="required" data-msg="Please write something for us"
+                                        data-rule="required" data-msg="Please write something for us" aria-label="Enter Your message Here"
                                         placeholder="Message"></textarea>
                                     <div class="validation"></div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
+                                    <input type="file" name="fileToUpload[]" id="fileToUpload" aria-label="Attach CV Here" multiple="multiple">
                                     <div id="formValidation" class="validation"></div>
                                 </div>
-                                <div class="text-center"><button type="submit" title="Send Message">Send
+                                <div class="text-center"><button id="btnContactUs" type="button" title="Send Message">Send
                                         Message</button>
                                 </div>
                             </form>
@@ -254,6 +255,10 @@
     <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="../lib/isotope/isotope.pkgd.min.js"></script>
     <script src="../lib/lightbox/js/lightbox.min.js"></script>
+
+    <!--Polyfill needed for IE for INCLUDES method-->
+    <script src="../js/polyfill.js"></script>
+
     <!-- Contact Form JavaScript File -->
     <script defer src="contactform/contactform.js"></script>
 

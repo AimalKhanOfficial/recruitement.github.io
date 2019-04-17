@@ -2,8 +2,8 @@ jQuery(document).ready(function ($) {
   "use strict";
   $('#img-load').hide();
   //Contact
-  $('form.contactForm').submit(function () {
-    var f = $(this).find('.form-group'),
+  $('#btnContactUs').click(function (event) {
+    var f = $('form.contactForm').find('.form-group'),
       ferror = false,
       emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
 
@@ -88,37 +88,39 @@ jQuery(document).ready(function ($) {
         i.next('.validation').html((ierror ? (i.attr('data-msg') != undefined ? i.attr('data-msg') : 'wrong Input') : '')).show('blind');
       }
     });
-    if (ferror) return false;
-    else var str = $(this).serialize();
-    var action = $(this).attr('action');
-
-    if (!action) {
-      action = 'contactform/contactform.php';
-    }
-    
+    //Checking for extensions - Aimal
     var allowedExtensions = ["pdf", "doc", "docx", "jpg", "jpeg", "png", "gif", "txt"];
     var fileSizes = 0;
-    var valid_form = true;
     var files = $('#fileToUpload').prop('files');
     for (var i = 0; i < files.length; i++) {
       if (files[i] != null) {
         fileSizes += files[i].size;
         var extn = files[i].name.split('.').pop();
         if (!allowedExtensions.includes(extn.toLowerCase())) {
-          valid_form = false;
+          ferror = true;
           $('#formValidation').html("File name: " + files[i].name + " is not supported, select a valid file!").show();
           break;
         } else if (fileSizes > 20 * 1024 * 1024) {
           //checking for size, must be less than or equal to 20 MB
-          valid_form = false;
+          ferror = true;
           $('#formValidation').html("File size too huge. Must be less than or equal to 20 MB").show();
           break;
         }
       }
     }
-    if (!valid_form) {
+    debugger;
+    if (ferror) {
+      event.preventDefault();
       return false;
-    } else {
+    }
+    else {
+      
+      var action = $(this).attr('action');
+
+      if (!action) {
+        action = 'contactform/contactform.php';
+      }
+
       $('#myLoadingModal').modal('show');
       var contactFormData = new FormData();
       contactFormData.append('name', $('#name').val());
@@ -135,7 +137,7 @@ jQuery(document).ready(function ($) {
         processData: false,
         contentType: false,
         success: function (msg) {
-          if (msg.includes("Mailer Error")){
+          if (msg.includes("Mailer Error")) {
             $("#sendmessage").removeClass("show");
             $('#formValidation').hide();
             $("#errormessage").addClass("show");
@@ -152,7 +154,6 @@ jQuery(document).ready(function ($) {
         }
       });
     }
-    return false;
   });
 
 });
